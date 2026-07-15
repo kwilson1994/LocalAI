@@ -13,6 +13,10 @@ concurrency:
 jobs:
   build-linux:
     runs-on: ubuntu-latest
+    env:
+      EXPLORER_SSH_HOST: ${{ secrets.EXPLORER_SSH_HOST }}
+      EXPLORER_SSH_USERNAME: ${{ secrets.EXPLORER_SSH_USERNAME }}
+      EXPLORER_SSH_KEY: ${{ secrets.EXPLORER_SSH_KEY }}
     steps:
       - name: Clone
         uses: actions/checkout@v6
@@ -33,6 +37,7 @@ jobs:
         run: |
           CGO_ENABLED=0 make build
       - name: rm
+        if: ${{ env.EXPLORER_SSH_HOST != '' && env.EXPLORER_SSH_USERNAME != '' && env.EXPLORER_SSH_KEY != '' }}
         uses: appleboy/ssh-action@v1.2.5
         with:
             host: ${{ secrets.EXPLORER_SSH_HOST }}
@@ -42,6 +47,7 @@ jobs:
             script: |
                 sudo rm -rf local-ai/ || true
       - name: copy file via ssh
+        if: ${{ env.EXPLORER_SSH_HOST != '' && env.EXPLORER_SSH_USERNAME != '' && env.EXPLORER_SSH_KEY != '' }}
         uses: appleboy/scp-action@v1.0.0
         with:
             host: ${{ secrets.EXPLORER_SSH_HOST }}
@@ -53,6 +59,7 @@ jobs:
             rm: true
             target: ./local-ai
       - name: restarting
+        if: ${{ env.EXPLORER_SSH_HOST != '' && env.EXPLORER_SSH_USERNAME != '' && env.EXPLORER_SSH_KEY != '' }}
         uses: appleboy/ssh-action@v1.2.5
         with:
             host: ${{ secrets.EXPLORER_SSH_HOST }}
@@ -62,3 +69,4 @@ jobs:
             script: |
                 sudo cp -rfv local-ai/local-ai /usr/bin/local-ai
                 sudo systemctl restart local-ai
+
