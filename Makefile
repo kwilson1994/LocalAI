@@ -131,9 +131,9 @@ run: ## run local-ai
 test-models/testmodel.ggml:
 	mkdir -p test-models
 	mkdir -p test-dir
-	wget -q https://huggingface.co/mradermacher/gpt2-alpaca-gpt4-GGUF/resolve/main/gpt2-alpaca-gpt4.Q4_K_M.gguf -O test-models/testmodel.ggml
-	wget -q https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.en.bin -O test-models/whisper-en
-	wget -q https://huggingface.co/mudler/all-MiniLM-L6-v2/resolve/main/ggml-model-q4_0.bin -O test-models/bert
+	curl -fL --retry 5 --retry-delay 5 --retry-all-errors --connect-timeout 30 -o test-models/testmodel.ggml https://huggingface.co/mradermacher/gpt2-alpaca-gpt4-GGUF/resolve/main/gpt2-alpaca-gpt4.Q4_K_M.gguf
+	curl -fL --retry 5 --retry-delay 5 --retry-all-errors --connect-timeout 30 -o test-models/whisper-en https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.en.bin
+	curl -fL --retry 5 --retry-delay 5 --retry-all-errors --connect-timeout 30 -o test-models/bert https://huggingface.co/mudler/all-MiniLM-L6-v2/resolve/main/ggml-model-q4_0.bin
 	wget -q https://cdn.openai.com/whisper/draft-20220913a/micro-machines.wav -O test-dir/audio.wav
 	cp tests/models_fixtures/* test-models
 
@@ -578,3 +578,4 @@ build-launcher-darwin: build-launcher
 
 build-launcher-linux:
 	cd cmd/launcher && go run fyne.io/tools/cmd/fyne@latest package -os linux -icon ../../core/http/static/logo.png --executable $(LAUNCHER_BINARY_NAME)-linux && mv launcher.tar.xz ../../$(LAUNCHER_BINARY_NAME)-linux.tar.xz
+
