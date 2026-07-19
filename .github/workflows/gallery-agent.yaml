@@ -130,7 +130,7 @@ jobs:
             
             **Workflow Details:**
             - Triggered by: `${{ github.event_name }}`
-            - Run ID: `${{ github.run_id }}
+            - Run ID: `${{ github.run_id }}`
             - Commit: `${{ github.sha }}`
           signoff: true
           delete-branch: true
