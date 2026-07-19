@@ -87,7 +87,7 @@
                                     <input
                                         type="text"
                                         id="image-size"
-                                        value="512x512"
+                                        value="256x256"
                                         placeholder="e.g., 256x256, 512x512, 1024x1024"
                                         class="input p-1.5 text-xs w-full"
                                     />
@@ -271,7 +271,7 @@
     });
 
     // Set initial active size preset
-    document.querySelector('.size-preset[data-size="512x512"]').classList.add('bg-[var(--color-primary)]', 'text-white');
+    document.querySelector('.size-preset[data-size="256x256"]').classList.add('bg-[var(--color-primary)]', 'text-white');
 
     // Dynamic image inputs for Reference Images
     function addReferenceImage() {
