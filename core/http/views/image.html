@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {{template "views/partials/head" .}}
-<script defer src="static/image.js"></script>
+<script defer src="/static/image.js"></script>
 
 <body class="bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] flex flex-col h-screen">
 <div class="flex flex-col flex-1 overflow-hidden">
@@ -18,7 +18,7 @@
                         <div class="flex items-center justify-between gap-2">
                             <label class="text-xs font-medium text-[var(--color-text-secondary)] uppercase tracking-wide flex-shrink-0">Model</label>
                         </div>
-                        <select x-data="{ link : '{{if .Model}}image/{{.Model}}{{end}}' }" x-model="link" x-init="$watch('link', value => window.location = link)" 
+                        <select x-data="{ link : '{{if .Model}}/image/{{.Model}}{{end}}' }" x-model="link" x-init="$watch('link', value => window.location = link)"
                             id="model-select"
                             class="input w-full p-1.5 text-xs"
                         >	
@@ -28,19 +28,19 @@
                               {{ $cfg := . }}
                               {{ range .KnownUsecaseStrings }}
                                 {{ if eq . "FLAG_IMAGE" }}
-                                    <option value="image/{{$cfg.Name}}" {{ if eq $cfg.Name $model }} selected {{end}} class="bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]">{{$cfg.Name}}</option>
+                                    <option value="/image/{{$cfg.Name}}" {{ if eq $cfg.Name $model }} selected {{end}} class="bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]">{{$cfg.Name}}</option>
                                 {{ end }}
                               {{ end }}
                             {{ end }}
                             {{ range .ModelsWithoutConfig }}
-                                <option value="image/{{.}}" {{ if eq . $model }} selected {{ end }} class="bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]">{{.}}</option>
+                                <option value="/image/{{.}}" {{ if eq . $model }} selected {{ end }} class="bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]">{{.}}</option>
                             {{end}}
                         </select>
                     </div>
                     
                     <div class="relative">
                         <input id="image-model" type="hidden" value="{{.Model}}">
-                        <form id="genimage" action="image/{{.Model}}" method="get">
+                        <form id="genimage" action="/image/{{.Model}}" method="get">
                             <!-- Basic Settings -->
                             <div class="space-y-2">
                                 <!-- Prompt -->
