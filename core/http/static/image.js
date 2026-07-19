@@ -130,7 +130,18 @@ async function promptDallE() {
       body: JSON.stringify(requestBody),
     });
 
-    const json = await response.json();
+    const responseText = await response.text();
+    let json;
+    try {
+      json = JSON.parse(responseText);
+    } catch {
+      const detail = responseText.trim() || response.statusText || "No response body";
+      throw new Error("Image service returned HTTP " + response.status + ": " + detail);
+    }
+
+    if (!response.ok) {
+      throw new Error(json.error?.message || "Image service returned HTTP " + response.status);
+    }
 
     if (json.error) {
       // Display error
