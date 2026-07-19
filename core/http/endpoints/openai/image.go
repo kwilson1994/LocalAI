@@ -142,6 +142,23 @@ func ImageEndpoint(cl *config.ModelConfigLoader, ml *model.ModelLoader, appConfi
 
 		b64JSON := config.ResponseFormat == "b64_json"
 
+		// The request middleware normally populates PromptStrings. Keep the image
+		// endpoint robust when a custom model/backend skips that normalization.
+		if len(config.PromptStrings) == 0 {
+			switch prompt := input.Prompt.(type) {
+			case string:
+				if prompt != "" {
+					config.PromptStrings = append(config.PromptStrings, prompt)
+				}
+			case []interface{}:
+				for _, item := range prompt {
+					if value, ok := item.(string); ok && value != "" {
+						config.PromptStrings = append(config.PromptStrings, value)
+					}
+				}
+			}
+		}
+
 		// src and clip_skip
 		var result []schema.Item
 		for _, i := range config.PromptStrings {
