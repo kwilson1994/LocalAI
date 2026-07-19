@@ -11,6 +11,11 @@ if [ ! -f "$models_path/sd15-cpu.yaml" ] && [ -f /opt/localai/railway/sd15-cpu.y
 	install -m 0644 /opt/localai/railway/sd15-cpu.yaml "$models_path/sd15-cpu.yaml"
 fi
 
+# Migrate the earlier Railway seed away from a user-installed backend alias.
+if grep -qx 'backend: stablediffusion-ggml' "$models_path/sd15-cpu.yaml"; then
+	sed -i 's/^backend: stablediffusion-ggml$/backend: railway-stablediffusion-ggml/' "$models_path/sd15-cpu.yaml"
+fi
+
 # If we have set EXTRA_BACKENDS, then we need to prepare the backends
 if [ -n "$EXTRA_BACKENDS" ]; then
 	echo "EXTRA_BACKENDS: $EXTRA_BACKENDS"
