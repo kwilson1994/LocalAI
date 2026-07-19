@@ -25,6 +25,11 @@ on:
         required: false
         default: '1'
         type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   gallery-agent:
     runs-on: ubuntu-latest
@@ -105,8 +110,7 @@ jobs:
         if: steps.check_changes.outputs.changes == 'true'
         uses: peter-evans/create-pull-request@v8
         with:
-          token: ${{ secrets.UPDATE_BOT_TOKEN }}
-          push-to-fork: ci-forks/LocalAI
+          token: ${{ github.token }}
           commit-message: 'chore(model gallery): :robot: add new models via gallery agent'
           title: 'chore(model gallery): :robot: add ${{ steps.read_summary.outputs.models_added || 0 }} new models via gallery agent'
           # Branch has to be unique so PRs are not overriding each other
@@ -126,7 +130,7 @@ jobs:
             
             **Workflow Details:**
             - Triggered by: `${{ github.event_name }}`
-            - Run ID: `${{ github.run_id }}`
+            - Run ID: `${{ github.run_id }}
             - Commit: `${{ github.sha }}`
           signoff: true
           delete-branch: true
