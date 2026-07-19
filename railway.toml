@@ -1,0 +1,9 @@
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "qwen-image-edit-gpu/Dockerfile"
+
+[deploy]
+healthcheckPath = "/"
+healthcheckTimeout = 600
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5
