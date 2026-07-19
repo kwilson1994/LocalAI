@@ -310,6 +310,7 @@ COPY ./pkg/langchain ./pkg/langchain
 
 RUN ls -l ./
 RUN make protogen-go
+RUN make -C backend/go/stablediffusion-ggml build
 
 # The builder target compiles LocalAI. This target is not the target that will be uploaded to the registry.
 # Adjustments to the build process should likely be made here.
@@ -365,7 +366,11 @@ COPY ./entrypoint.sh .
 COPY --from=builder /build/local-ai ./
 
 # Make sure the models directory exists
-RUN mkdir -p /models /backends
+RUN mkdir -p /models /backends /var/lib/local-ai/backends/stablediffusion-ggml /opt/localai/railway
+
+# Keep the Railway image-generation backend outside user-mounted volumes.
+COPY --from=builder-backends /build/backend/go/stablediffusion-ggml/package/. /var/lib/local-ai/backends/stablediffusion-ggml/
+COPY ./railway/sd15-cpu.yaml /opt/localai/railway/sd15-cpu.yaml
 
 # Define the health check command
 HEALTHCHECK --interval=1m --timeout=10m --retries=10 \
