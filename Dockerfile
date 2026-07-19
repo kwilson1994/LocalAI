@@ -302,7 +302,6 @@ COPY ./Makefile .
 COPY ./backend ./backend
 COPY ./go.mod .
 COPY ./go.sum .
-COPY ./.git ./.git
 
 # Some of the Go backends use libs from the main src, we could further optimize the caching by building the CPP backends before here
 COPY ./pkg/grpc ./pkg/grpc
@@ -372,6 +371,5 @@ RUN mkdir -p /models /backends
 HEALTHCHECK --interval=1m --timeout=10m --retries=10 \
   CMD curl -f ${HEALTHCHECK_ENDPOINT} || exit 1
 
-VOLUME /models /backends /configuration
 EXPOSE 8080
 ENTRYPOINT [ "/entrypoint.sh" ]
