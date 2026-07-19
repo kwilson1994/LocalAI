@@ -1,4 +1,37 @@
 ---
+- name: "storygen-12b-it"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/turtle0001/StoryGen-12B-It-GGUF
+  description: |
+    To fetch the model description correctly, you need to authenticate with your Hugging Face token. Please obtain your token from [Hugging Face](https://huggingface.co/settings/credentials) and use it when calling the API. Once authenticated, the tool will retrieve the readme, and I can provide a clear description of the model for the gallery.
+  tags:
+    - llm
+    - gguf
+    - text-to-text
+  overrides:
+    parameters:
+      model: llama-cpp/models/Marekoth-Story-Base.Q4_K_M.gguf
+    name: StoryGen-12B-It-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    mmproj: llama-cpp/mmproj/Marekoth-Story-Base.BF16-mmproj.gguf
+    description: Imported from https://huggingface.co/turtle0001/StoryGen-12B-It-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/Marekoth-Story-Base.Q4_K_M.gguf
+      sha256: '****************************************************************'
+      uri: https://huggingface.co/turtle0001/StoryGen-12B-It-GGUF/resolve/main/Marekoth-Story-Base.Q4_K_M.gguf
+    - filename: llama-cpp/mmproj/Marekoth-Story-Base.BF16-mmproj.gguf
+      sha256: '****************************************************************'
+      uri: https://huggingface.co/turtle0001/StoryGen-12B-It-GGUF/resolve/main/Marekoth-Story-Base.BF16-mmproj.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
