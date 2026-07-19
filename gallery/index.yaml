@@ -1,4 +1,34 @@
 ---
+- name: "kepler-8b-instruct-v2-i1"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/mradermacher/Kepler-8B-Instruct-v2-i1-GGUF
+  description: |
+    This is a quantized version of the **intellectlabs/Kepler-8B-Instruct-v2** model, optimized for efficient deployment using the **GGUF** format. It supports text generation and conversational tasks, with multiple quantization levels (e.g., IQ1_S, IQ1_M, i1-Q4_K_M) available for different performance and quality trade-offs. The best-performing quantized version is **i1-Q4_K_M** (4.8 GB), balancing speed, size, and quality. The model is designed for use cases like chatbots and text generation, with options for custom quantization via the `imatrix` format.
+  tags:
+    - llm
+    - gguf
+    - text-to-text
+    - chat
+  overrides:
+    parameters:
+      model: llama-cpp/models/Kepler-8B-Instruct-v2.i1-Q4_K_M.gguf
+    name: Kepler-8B-Instruct-v2-i1-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/mradermacher/Kepler-8B-Instruct-v2-i1-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/Kepler-8B-Instruct-v2.i1-Q4_K_M.gguf
+      sha256: 5ee88c9b6d91dabbfbc63f1f365e0c3dd9c5062797366325adbedcab881b47cd
+      uri: https://huggingface.co/mradermacher/Kepler-8B-Instruct-v2-i1-GGUF/resolve/main/Kepler-8B-Instruct-v2.i1-Q4_K_M.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
