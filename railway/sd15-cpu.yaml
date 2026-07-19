@@ -1,5 +1,5 @@
 name: sd15-cpu
-backend: stablediffusion-ggml
+backend: railway-stablediffusion-ggml
 known_usecases:
 - FLAG_IMAGE
 threads: 2
