@@ -3,6 +3,14 @@ set -e
 
 cd /
 
+# Railway volumes hide files baked directly into /models. Seed the default image
+# model on every fresh or empty volume while preserving user edits.
+models_path="${LOCALAI_MODELS_PATH:-${MODELS_PATH:-/models}}"
+mkdir -p "$models_path"
+if [ ! -f "$models_path/sd15-cpu.yaml" ] && [ -f /opt/localai/railway/sd15-cpu.yaml ]; then
+	install -m 0644 /opt/localai/railway/sd15-cpu.yaml "$models_path/sd15-cpu.yaml"
+fi
+
 # If we have set EXTRA_BACKENDS, then we need to prepare the backends
 if [ -n "$EXTRA_BACKENDS" ]; then
 	echo "EXTRA_BACKENDS: $EXTRA_BACKENDS"
