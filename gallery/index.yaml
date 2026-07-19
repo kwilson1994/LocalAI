@@ -1,4 +1,35 @@
 ---
+- name: "microllm"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/Darlanio/MicroLLM-Q4_K_M-GGUF
+  description: |
+    The **Darlanio/MicroLLM-Q4_K_M-GGUF** model is a quantized version of the original **Darlanio/MicroLLM** model, optimized for efficient inference using the GGUF format. It is designed for lightweight deployment, leveraging quantization (Q4_K_M) to reduce memory usage while maintaining performance. The model is compatible with llama.cpp and supports both CLI and server-based inference. It is ideal for applications requiring low-resource consumption and fast processing.
+  tags:
+    - llm
+    - gguf
+    - gpu
+    - text-to-text
+    - thinking
+  overrides:
+    parameters:
+      model: llama-cpp/models/microllm-q4_k_m.gguf
+    name: MicroLLM-Q4_K_M-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/Darlanio/MicroLLM-Q4_K_M-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/microllm-q4_k_m.gguf
+      sha256: 0744fbf2fde0ceed84de0ef5833c151637c2fe55f47329fdbcafc59cf4b826ec
+      uri: https://huggingface.co/Darlanio/MicroLLM-Q4_K_M-GGUF/resolve/main/microllm-q4_k_m.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
