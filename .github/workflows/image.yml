@@ -1,17 +1,12 @@
 ---
   name: 'build container images'
-  
   on:
-    push:
-      branches:
-        - master
-      tags:
-        - '*'
-  
+    workflow_dispatch:
+
   concurrency:
     group: ci-${{ github.head_ref || github.ref }}-${{ github.repository }}
     cancel-in-progress: true
-  
+
   jobs:
     hipblas-jobs:
       uses: ./.github/workflows/image_build.yml
@@ -48,7 +43,7 @@
               aio: "-aio-gpu-hipblas"
               ubuntu-version: '2404'
               ubuntu-codename: 'noble'
-  
+
     core-image-build:
       uses: ./.github/workflows/image_build.yml
       with:
@@ -134,7 +129,7 @@
               aio: "-aio-gpu-intel"
               ubuntu-version: '2404'
               ubuntu-codename: 'noble'
-  
+
     gh-runner:
       uses: ./.github/workflows/image_build.yml
       with:
@@ -184,4 +179,4 @@
               skip-drivers: 'false'
               ubuntu-version: '2404'
               ubuntu-codename: 'noble'
-  
+
