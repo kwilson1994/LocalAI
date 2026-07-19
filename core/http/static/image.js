@@ -122,7 +122,7 @@ async function promptDallE() {
 
   // Make API request
   try {
-    const response = await fetch("v1/images/generations", {
+    const response = await fetch("/v1/images/generations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
