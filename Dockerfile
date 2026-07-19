@@ -366,10 +366,10 @@ COPY ./entrypoint.sh .
 COPY --from=builder /build/local-ai ./
 
 # Make sure the models directory exists
-RUN mkdir -p /models /backends /var/lib/local-ai/backends/stablediffusion-ggml /opt/localai/railway
+RUN mkdir -p /models /backends /var/lib/local-ai/backends/railway-stablediffusion-ggml /opt/localai/railway
 
 # Keep the Railway image-generation backend outside user-mounted volumes.
-COPY --from=builder-backends /build/backend/go/stablediffusion-ggml/package/. /var/lib/local-ai/backends/stablediffusion-ggml/
+COPY --from=builder-backends /build/backend/go/stablediffusion-ggml/package/. /var/lib/local-ai/backends/railway-stablediffusion-ggml/
 COPY ./railway/sd15-cpu.yaml /opt/localai/railway/sd15-cpu.yaml
 
 # Define the health check command
