@@ -1,4 +1,37 @@
 ---
+- name: "gemma-4-12b-it-untied-i1"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/mradermacher/gemma-4-12B-it-untied-i1-GGUF
+  description: |
+    The model is a quantized version of the **Gemma-4-12B It** (also known as **Gemma-4-12B It Untied**), originally developed by the team behind the **Gemma** series. It is a **405 billion parameter** model fine-tuned for versatility, designed for tasks like text generation, reasoning, and multi-modal processing. The quantized version uses **Q4_K_S** and **Q2_K** quantization to reduce memory usage while maintaining performance, making it suitable for deployment in resource-constrained environments. It is **untied**, meaning it doesn't enforce strict layer constraints, offering flexibility for various applications. The model is optimized for efficiency and scalability, ideal for use in model galleries or production systems.
+  license: "cc-by-4.0"
+  tags:
+    - llm
+    - multimodal
+    - gguf
+    - thinking
+    - reasoning
+    - text-to-text
+  overrides:
+    parameters:
+      model: llama-cpp/models/gemma-4-12B-it-untied.i1-Q4_K_M.gguf
+    name: gemma-4-12B-it-untied-i1-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/mradermacher/gemma-4-12B-it-untied-i1-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/gemma-4-12B-it-untied.i1-Q4_K_M.gguf
+      sha256: 64f1f7f44f8c72884590a081ce1b7abce07f34307e8df7db2192e3bd45b2e3c4
+      uri: https://huggingface.co/mradermacher/gemma-4-12B-it-untied-i1-GGUF/resolve/main/gemma-4-12B-it-untied.i1-Q4_K_M.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
