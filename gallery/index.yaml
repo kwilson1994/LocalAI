@@ -1,4 +1,37 @@
 ---
+- name: "gemma-4-12b-it"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/lmstudio-community/gemma-4-12B-it-GGUF
+  description: |
+    The **gemma-4-12B-it** model is a large language model developed by Google, available as a community model through LM Studio. It is quantized using GGUF format, provided by the LM Studio team. The model is designed for tasks like text generation and is part of the broader community-driven model ecosystem. For detailed specifications, refer to the original Google model repository.
+  tags:
+    - llm
+    - gguf
+    - text-to-text
+  overrides:
+    parameters:
+      model: llama-cpp/models/gemma-4-12B-it-Q4_K_M.gguf
+    name: gemma-4-12B-it-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    mmproj: llama-cpp/mmproj/mmproj-gemma-4-12B-it-BF16.gguf
+    description: Imported from https://huggingface.co/lmstudio-community/gemma-4-12B-it-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/gemma-4-12B-it-Q4_K_M.gguf
+      sha256: 95d83ba36642b1f385fb906b5962a71763361be3bac930a709945f72d97473f8
+      uri: https://huggingface.co/lmstudio-community/gemma-4-12B-it-GGUF/resolve/main/gemma-4-12B-it-Q4_K_M.gguf
+    - filename: llama-cpp/mmproj/mmproj-gemma-4-12B-it-BF16.gguf
+      sha256: 7fd884a5f7d9ee60f6b88e5b51287151e547454b2b60a4a6270bb5434310ad0e
+      uri: https://huggingface.co/lmstudio-community/gemma-4-12B-it-GGUF/resolve/main/mmproj-gemma-4-12B-it-BF16.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
