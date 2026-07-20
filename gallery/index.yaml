@@ -1,4 +1,51 @@
 ---
+- name: "xgemable-12b-coder-v2-fullft"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/xCloudinfo/xGemable-12B-coder-v2-fullft-GGUF
+  description: |
+    The **xGemable-12B-coder-v2-fullft-GGUF** is a 12B-parameter code-generation model trained on the **google/gemma-4-12B-it** base. It specializes in writing functional, compile-able code, with features like multi-language support, full fine-tuning, and long-context processing.
+
+    Key highlights:
+      - **12B params**, **91.5% HumanEval pass** (Q4_K_M quantized).
+      - **Full fine-tune + long-context** avoids "LoRA + truncation" pitfalls.
+      - **Multi-language** (Python, C#, Rust, etc.).
+      - **Function calling** and **tool usage** for error debugging.
+      - **GGUF format** for efficient local deployment (16GB RAM+).
+      - **1M token context** (via llama.cpp/LLM Studio), suitable for complex tasks.
+
+    Licensing: AGPL-3.0-derived, with base model licensed under Apache-2.0.
+  license: "AGPL-3.0-derived"
+  tags:
+    - llm
+    - gguf
+    - code
+    - text-to-text
+    - multi-language
+    - instruction-tuned
+    - thinking
+  overrides:
+    parameters:
+      model: llama-cpp/models/xGemable-12B-Fable-fullft-Q4_K_M.gguf
+    name: xGemable-12B-coder-v2-fullft-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/xCloudinfo/xGemable-12B-coder-v2-fullft-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/xGemable-12B-Fable-fullft-Q4_K_M.gguf
+      sha256: 9969fc88cd71fa981caf50ff4ba12700c4dfbaac4d90e995b10c44512b447b2b
+      uri: https://huggingface.co/xCloudinfo/xGemable-12B-coder-v2-fullft-GGUF/resolve/main/xGemable-12B-Fable-fullft-Q4_K_M.gguf
+    - filename: llama-cpp/models/xGemable-12B-coder-v2-fullft-Q4_K_M.gguf
+      sha256: 39020aa51cdd718e0d705b7f36e83df2401063cd8345825f36d8e15af7ce94b1
+      uri: https://huggingface.co/xCloudinfo/xGemable-12B-coder-v2-fullft-GGUF/resolve/main/xGemable-12B-coder-v2-fullft-Q4_K_M.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
