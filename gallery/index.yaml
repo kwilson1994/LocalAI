@@ -1,4 +1,44 @@
 ---
+- name: "aura-large-v1-bf16"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/mradermacher/Aura-Large-v1-BF16-GGUF
+  description: |
+    The **Aura-Large-v1-BF16** is a large language model (LLM) optimized for efficient inference and deployment. It is quantized to **BF16 precision**, reducing memory usage while maintaining high performance. The model is based on the original **Aura-Large-v1** architecture, featuring 1.5 billion parameters. It uses the **Aura-v1 tokenizer** and is designed for tasks like text generation, reasoning, and multi-modal processing. Key features include:
+
+      - **Quantization**: BF16 (Brain Floating Point 16-bit) for efficient storage and computation.
+      - **Use Case**: Suitable for applications requiring high throughput and low memory consumption, such as real-time AI services or edge devices.
+      - **Tags**: Q4_K_S, Q2_K, Q8_0, etc., indicating quantization levels.
+
+    This model is a quantized version of the original Aura-Large-v1, tailored for deployment in environments with limited resources.
+  license: "none"
+  tags:
+    - Q4_K_S
+    - Q2_K
+    - Q8_0
+  overrides:
+    parameters:
+      model: llama-cpp/models/Aura-Large-v1-BF16.Q4_K_M.gguf
+    name: Aura-Large-v1-BF16-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    mmproj: llama-cpp/mmproj/Aura-Large-v1-BF16.mmproj-f16.gguf
+    description: Imported from https://huggingface.co/mradermacher/Aura-Large-v1-BF16-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/Aura-Large-v1-BF16.Q4_K_M.gguf
+      sha256: a9a81746f1f8ef291fbc63ea5986359acac92a0435b01e5a827593ab2aedfd52
+      uri: https://huggingface.co/mradermacher/Aura-Large-v1-BF16-GGUF/resolve/main/Aura-Large-v1-BF16.Q4_K_M.gguf
+    - filename: llama-cpp/mmproj/Aura-Large-v1-BF16.mmproj-f16.gguf
+      sha256: 7158b7cd65a0b28df3585759b798f699e6b1bdf0640220d2addc785bd7433a75
+      uri: https://huggingface.co/mradermacher/Aura-Large-v1-BF16-GGUF/resolve/main/Aura-Large-v1-BF16.mmproj-f16.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
