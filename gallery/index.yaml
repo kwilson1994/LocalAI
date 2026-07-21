@@ -1,4 +1,61 @@
 ---
+- name: "openpangu-2.0-flash-ik-llama"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/ji-farthing/openPangu-2.0-Flash-ik-llama-GGUF
+  description: |
+    **Model Name:** openPangu-2.0-Flash ik_llama GGUF
+    **Base Model:** openPangu/openPangu-2.0-Flash
+    **Quantization:** GGUF (IQ4_NL, Q4_K_M)
+    **Size:** ~53.46 GB (IQ4_NL) vs. ~56.7 GB (Q4_K_M)
+    **Features:**
+      - 92B-A6B MoE (Mixture of Experts) trained for 512K context
+      - GGUF quantized for efficient deployment on CPU/CUDA
+      - Self-contained conversion with DSA/SWA scheduling and indexer config
+      - Supports NextN/MTP speculation (optional)
+      - Runs with routed experts in system RAM
+
+    **Use Case:**
+    Ideal for low-latency, high-throughput text generation on CPU or CUDA GPUs. Suitable for chatbots, code generation, and multilingual tasks.
+
+    **License:**
+    Inherits the openPangu License (attribution and EU restrictions).
+
+    **Key Benefits:**
+      - Efficient memory usage (IQ4_NL is 5.7% smaller than Q4_K_M)
+      - Fully functional with no-spec RTX 4070 benchmark
+      - Verified through validation tests (no non-finite values, no errors)
+
+    *Note: This is a quantized version of the original openPangu-2.0-Flash model, not the original author's version.*
+  license: "Inherits the openPangu License (attribution and EU restrictions)."
+  tags:
+    - llm
+    - gguf
+    - gpu
+    - cpu
+    - text-to-text
+    - chat
+    - instruction-tuned
+    - openPangu
+  overrides:
+    parameters:
+      model: llama-cpp/models/openPangu-2.0-Flash-ik_llama-Q4_K_M.gguf
+    name: openPangu-2.0-Flash-ik-llama-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/ji-farthing/openPangu-2.0-Flash-ik-llama-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/openPangu-2.0-Flash-ik_llama-Q4_K_M.gguf
+      sha256: 1fd980491573a39fcaf4a08acfaf2b15a6ef606cc947998d4f23a8b3e4f7a79c
+      uri: https://huggingface.co/ji-farthing/openPangu-2.0-Flash-ik-llama-GGUF/resolve/main/openPangu-2.0-Flash-ik_llama-Q4_K_M.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
