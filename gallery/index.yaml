@@ -1,4 +1,40 @@
 ---
+- name: "gemma-4-e2b-it"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/lmstudio-community/gemma-4-E2B-it-GGUF
+  description: |
+    The **gemma-4-E2B-it** model is a large language model developed by Google, based on the original `google/gemma-4-E2B-it` framework. It is part of the LM Studio community models and is licensed under the Apache-2.0 license. The model is quantized using the GGUF format, provided by LM Studio using the `llama.cpp` release. It is designed for efficient deployment and is intended for general-purpose language tasks.
+  license: "apache-2.0"
+  tags:
+    - llm
+    - gguf
+    - text-to-text
+    - thinking
+    - gemma
+  overrides:
+    parameters:
+      model: llama-cpp/models/gemma-4-E2B-it-Q4_K_M.gguf
+    name: gemma-4-E2B-it-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    mmproj: llama-cpp/mmproj/mmproj-gemma-4-E2B-it-BF16.gguf
+    description: Imported from https://huggingface.co/lmstudio-community/gemma-4-E2B-it-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/gemma-4-E2B-it-Q4_K_M.gguf
+      sha256: 71e6e8cb64a76da1a734fb8f6ba389d2784950d9902f5e87244fca0a15190c94
+      uri: https://huggingface.co/lmstudio-community/gemma-4-E2B-it-GGUF/resolve/main/gemma-4-E2B-it-Q4_K_M.gguf
+    - filename: llama-cpp/mmproj/mmproj-gemma-4-E2B-it-BF16.gguf
+      sha256: 04125f8e2a1135824e48064c32157356704e6681a9f3af669af321a3c70c39d7
+      uri: https://huggingface.co/lmstudio-community/gemma-4-E2B-it-GGUF/resolve/main/mmproj-gemma-4-E2B-it-BF16.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
