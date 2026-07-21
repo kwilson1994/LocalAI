@@ -1,4 +1,58 @@
 ---
+- name: "smolm2prover"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/reaperdoesntknow/SMOLM2Prover-GGUF
+  description: |
+    **Model Name:** SMOLM2Prover (GGUF)
+    **Base Model:** prithivMLmods/SmolLM2-CoT-360M
+    **Quantization:** Q4_K_M (Recommended)
+    **Features:**
+      - **Text Generation & Reasoning:** Supports math, logic, calculus, and proof tasks.
+      - **Efficiency:** 63% smaller (258M vs. 692M) with Q4_K_M quantization.
+      - **Compatibility:** Works with llama.cpp, Ollama, and LM Studio.
+      - **Architectural Details:** 32 layers, 15 heads (Q=15, KV=5), GQA.
+      - **License:** Apache-2.0 (same as original model).
+
+    **Use Cases:**
+      - Efficient reasoning for complex problems (math, logic, proofs).
+      - Lightweight deployment on CPU/GPU for scalable AI tasks.
+
+    **Research Foundation:** Part of Convergent Intelligence’s DISC framework, emphasizing structural insights over traditional training metrics.
+
+    **Related Models:**
+      - SMOLM2Prover (HF), DeepReasoning_1R, SAGI, S-AGI.
+
+    *Optimized for balance between performance and size, ideal for efficient reasoning tasks.*
+  license: "apache-2.0"
+  tags:
+    - llm
+    - gguf
+    - gpu
+    - cpu
+    - text-to-text
+    - reasoning
+    - thinking
+    - instruction-tuned
+  overrides:
+    parameters:
+      model: llama-cpp/models/SMOLM2Prover-Q4_K_M.gguf
+    name: SMOLM2Prover-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/reaperdoesntknow/SMOLM2Prover-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/SMOLM2Prover-Q4_K_M.gguf
+      sha256: 55f1d76afef32d2a1c3e1d67cd8f7f464286f60ff146270c9eeb875f95f96bbc
+      uri: https://huggingface.co/reaperdoesntknow/SMOLM2Prover-GGUF/resolve/main/SMOLM2Prover-Q4_K_M.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
