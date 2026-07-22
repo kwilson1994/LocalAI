@@ -1,4 +1,37 @@
 ---
+- name: "llama-3.1-70b-instruct-jbliterated-i1"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/mradermacher/Llama-3.1-70B-Instruct-Jbliterated-i1-GGUF
+  description: |
+    The model is a large language model (LLM) based on the **Llama-3.1-70B-Instruct** architecture, optimized for efficiency through quantization. It features 70 billion parameters and is designed for instruction tuning, enabling tasks like text generation, reasoning, and multi-turn dialogue. The quantized version (Jbliterated) is a variant with specific quantization settings (e.g., IQ1_S, IQ2_XXS, etc.), offering trade-offs between accuracy and computational efficiency. It is available in multiple GGUF formats for different performance levels, with the highest-quality version being **i1-Q4_K_M** (42.6 GB). The model is part of a broader series of quantized versions of the Llama-3.1 series, tailored for deployment in various hardware configurations.
+  tags:
+    - llm
+    - gguf
+    - instruction-tuned
+    - text-to-text
+    - thinking
+    - chat
+    - llama
+  overrides:
+    parameters:
+      model: llama-cpp/models/Llama-3.1-70B-Instruct-Jbliterated.i1-Q4_K_M.gguf
+    name: Llama-3.1-70B-Instruct-Jbliterated-i1-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/mradermacher/Llama-3.1-70B-Instruct-Jbliterated-i1-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/Llama-3.1-70B-Instruct-Jbliterated.i1-Q4_K_M.gguf
+      sha256: b8b74fac553b49646e0c961533cd410abc3f0fcaeac3268cd75a224cbb79fcc5
+      uri: https://huggingface.co/mradermacher/Llama-3.1-70B-Instruct-Jbliterated-i1-GGUF/resolve/main/Llama-3.1-70B-Instruct-Jbliterated.i1-Q4_K_M.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
