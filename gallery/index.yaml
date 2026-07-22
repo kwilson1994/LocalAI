@@ -1,4 +1,51 @@
 ---
+- name: "joyai-echo-ltx23-echovid-ltxaud-surgical"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/joeygambino/joyai-echo-ltx23-echoVid-ltxAud-surgical-gguf
+  description: |
+    **Model Description:**
+    The model is a quantized GGUF version of the **JoyAI-Echo x LTX-2.3 surgical merge**, combining JoyAI-Echo's video generation (face consistency) with LTX-2.3's audio branch (good voice). It’s a pre-quantized, non-retrained version of the merge, ensuring fidelity across shots.
+
+    **Key Features:**
+      - **Merge**: Combines JoyAI-Echo’s video and LTX-2.3’s audio strengths.
+      - **Quantized**: Optimized for efficiency (Q8_0 or INT8 ConvRot for speed/accuracy).
+      - **Use Cases**: Text-to-video, audio generation, and multishot workflows.
+      - **Performance**: Q8_0 offers ~0.36° angular deviation (high fidelity), while INT8 ConvRot is faster for ComfyUI.
+
+    **Recommendation:**
+    Use `LTX23-echoVid-ltxAud-Surgical-DiT-Q8_0.gguf` for high-fidelity results (default). Requires a full checkpoint (e.g., `.safetensors`) for proper loading.
+
+    **License:** LTX-2 Community License (research/Non-Commercial).
+
+    **Note:** Quantization is evaluated functionally, not by render quality. Avoid comparing renders when assessing fidelity.
+  license: "LTX-2 Community License"
+  tags:
+    - gguf
+    - multimodal
+    - text-to-video
+    - audio-generation
+    - quantized
+    - llm
+  overrides:
+    parameters:
+      model: llama-cpp/models/LTX23-echoVid-ltxAud-Surgical-DiT-Q8_0.gguf
+    name: joyai-echo-ltx23-echoVid-ltxAud-surgical-gguf
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/joeygambino/joyai-echo-ltx23-echoVid-ltxAud-surgical-gguf
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/LTX23-echoVid-ltxAud-Surgical-DiT-Q8_0.gguf
+      sha256: 8839486bbe7575b940e8e29770efb94988cef4fad5b70478b037de4176faf863
+      uri: https://huggingface.co/joeygambino/joyai-echo-ltx23-echoVid-ltxAud-surgical-gguf/resolve/main/LTX23-echoVid-ltxAud-Surgical-DiT-Q8_0.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
