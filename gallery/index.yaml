@@ -1,4 +1,50 @@
 ---
+- name: "jgos-31b-citizen-v2-i1"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/mradermacher/JGOS-31B-Citizen-v2-i1-GGUF
+  description: |
+    **Model Name:** JGOS-31B-Citizen-v2
+    **Base Model:** Google Gemma-4-31B-it (Apache-2.0)
+    **Language:** Korean & English
+    **License:** Apache-2.0
+
+    **Description:**
+    A Korean-language vision model derived from the Google Gemma-4-31B-it, optimized for Korean text processing. It supports multi-language tasks and includes tags for Korean (korean), Japanese (jgos), and Gemma4 (gemma4). The model is quantized for efficiency, with mmproj files available for vision tasks.
+
+    **Key Features:**
+      - Based on Gemma-4-31B-it (Apache-2.0)
+      - Korean language support
+      - Quantized for performance
+      - Tags: gemma4, korean, jgos
+
+    **Use Case:** Suitable for Korean text generation, translation, and vision tasks with efficient inference.
+  license: "apache-2.0"
+  tags:
+    - llm
+    - gemma4
+    - korean
+    - jgos
+    - vision
+  overrides:
+    parameters:
+      model: llama-cpp/models/JGOS-31B-Citizen-v2.i1-Q4_K_M.gguf
+    name: JGOS-31B-Citizen-v2-i1-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/mradermacher/JGOS-31B-Citizen-v2-i1-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/JGOS-31B-Citizen-v2.i1-Q4_K_M.gguf
+      sha256: c89c925d1693e74bca3b1fa084fce81b676d4cf7a2d956e7794a87ce0f6273e6
+      uri: https://huggingface.co/mradermacher/JGOS-31B-Citizen-v2-i1-GGUF/resolve/main/JGOS-31B-Citizen-v2.i1-Q4_K_M.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
