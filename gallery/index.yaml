@@ -1,4 +1,48 @@
 ---
+- name: "laguna-s-2.1-crack"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/dealignai/Laguna-S-2.1-CRACK-GGUF
+  description: |
+    **Model Description:**
+    The **Laguna-S-2.1 CRACK-GGUF** is a quantized variant of the **poolside/Laguna-S-2.1** model, optimized for llama.cpp as a GGUF file. It is a permissive research variant with **refusal behavior removed**, preserving coding, reasoning, and general knowledge while achieving high accuracy on MMLU (72.9% for Q4_K_M).
+
+    Key Features:
+      - **Quantized** (Q6_K, Q4_K_M, Q2_K) with high-precision attention and router, ensuring quality even at 2-bit.
+      - **High accuracy**: MMLU (72.9% for Q4_K_M), HarmBench-320 (97.5% with 0 refusals).
+      - **Security-focused**: Designed for **security research, red-teaming, and evaluation**, with no refusals across HarmBench-320.
+      - **Efficient**: Smallest size (Q2_K) runs on less memory, while Q6_K offers near-lossless quality.
+
+    **Use Case**: Ideal for model evaluation, red-teaming, and research, with balanced accuracy and performance.
+  license: "cc-by-4.0"
+  tags:
+    - llm
+    - gguf
+    - quantized
+    - cpu
+    - gpu
+    - reasoning
+    - instruction-tuned
+    - code
+  overrides:
+    parameters:
+      model: llama-cpp/models/Laguna-S-2.1-CRACK-Q4_K_M.gguf
+    name: Laguna-S-2.1-CRACK-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/dealignai/Laguna-S-2.1-CRACK-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/Laguna-S-2.1-CRACK-Q4_K_M.gguf
+      sha256: 97b70896d09c5d837c02afd6b4a89895a7edbe85fc4cafff3ed0a349c4ca0a1e
+      uri: https://huggingface.co/dealignai/Laguna-S-2.1-CRACK-GGUF/resolve/main/Laguna-S-2.1-CRACK-Q4_K_M.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
