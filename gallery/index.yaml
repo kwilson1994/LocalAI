@@ -1,4 +1,33 @@
 ---
+- name: "grm-2.6-plus-0628-mtp-reasoning-i1"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/DAXZEIT/GRM-2.6-Plus-0628-MTP-reasoning-i1-GGUF
+  description: |
+    AI model: grm-2.6-plus-0628-mtp-reasoning-i1
+  tags:
+    - llm
+    - gguf
+    - reasoning
+  overrides:
+    parameters:
+      model: llama-cpp/models/grm-2.6-plus-0628-Q4_K_M-reasoning-imat.gguf
+    name: GRM-2.6-Plus-0628-MTP-reasoning-i1-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/DAXZEIT/GRM-2.6-Plus-0628-MTP-reasoning-i1-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/grm-2.6-plus-0628-Q4_K_M-reasoning-imat.gguf
+      sha256: f5e1e7dd28c1fa0f3f94b669441ba41fe259b1f3f6156e1408a8e8b796b5784a
+      uri: https://huggingface.co/DAXZEIT/GRM-2.6-Plus-0628-MTP-reasoning-i1-GGUF/resolve/main/grm-2.6-plus-0628-Q4_K_M-reasoning-imat.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
