@@ -1,4 +1,35 @@
 ---
+- name: "qwen2.5-coder-32b-heretic-swe-sft"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/mradermacher/qwen2.5-coder-32b-heretic-swe-sft-GGUF
+  description: |
+    This model is a quantized version of the Qwen2.5 Coder 32B model, optimized for efficiency and performance. It uses Q4_K_S (16-bit) and Q8_0 (8-bit) quantization, offering fast inference with high quality. Designed for code generation, it includes features like "heretic" and "uncensored" tags, and is compatible with the Transformers library. Available in GGUF format, it supports multi-part file concatenation and is recommended for tasks requiring efficient model deployment.
+  license: "cc-by-4.0"
+  tags:
+    - llm
+    - gguf
+    - text-to-text
+    - code
+  overrides:
+    parameters:
+      model: llama-cpp/models/qwen2.5-coder-32b-heretic-swe-sft.Q4_K_M.gguf
+    name: qwen2.5-coder-32b-heretic-swe-sft-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/mradermacher/qwen2.5-coder-32b-heretic-swe-sft-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/qwen2.5-coder-32b-heretic-swe-sft.Q4_K_M.gguf
+      sha256: 483cca59fcc7b80ef42197d2eb5ea1cd26f7f1509807c18e723407f9c1c191b9
+      uri: https://huggingface.co/mradermacher/qwen2.5-coder-32b-heretic-swe-sft-GGUF/resolve/main/qwen2.5-coder-32b-heretic-swe-sft.Q4_K_M.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
