@@ -1,4 +1,53 @@
 ---
+- name: "qwen3.6-27b-uncensored-genesis-mtp"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/LuffyTheFox/Qwen3.6-27B-Uncensored-Genesis-MTP-GGUF
+  description: |
+    This model, **Qwen3.6-27B-Uncensored-Genesis-MTP-GGUF**, is a quantized version of the base model **HauhauCS/Qwen3.6-27B-Uncensored-HauhauCS-Aggressive**, optimized for efficient deployment. It uses the **Genesis algorithm** to repair tensor noise, scale mismatches, and mean drift, ensuring stable performance and clear outputs.
+
+    **Key Features:**
+      - **Quantized**: Q5_K_P (supports 8-bit precision).
+      - **Hardware**: Requires ≥24 GB VRAM (RTX 3060 12 GB or higher).
+      - **Architecture**: Hybrid (Gated DeltaNet + full softmax), 35B parameters, 256 experts (8 per token).
+      - **Multimodal**: Supports text, image, and video.
+      - **Vocabulary**: 262K tokens, 201 languages.
+      - **Compatibility**: Works with llama.cpp, LM Studio, and other GGUF-compatible runners.
+
+    **Purpose**: Fixes signal corruption in training data, improving stability and accuracy without retraining.
+  tags:
+    - llm
+    - gguf
+    - gpu
+    - multimodal
+    - quantized
+    - text-to-text
+  overrides:
+    parameters:
+      model: llama-cpp/models/Qwen3.6-27B-Uncensored-Genesis-MTP-Q4_K_M.gguf
+    name: Qwen3.6-27B-Uncensored-Genesis-MTP-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    mmproj: llama-cpp/mmproj/mmproj-Qwen3.6-27B-Uncensored-Genesis-F16.gguf
+    description: Imported from https://huggingface.co/LuffyTheFox/Qwen3.6-27B-Uncensored-Genesis-MTP-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/Qwen3.6-27B-Uncensored-Genesis-MTP-Q4_K_M.gguf
+      sha256: 6db3e7e868c988a114976c9f420e20390d65ca86f20845bb4529c5ded61aab36
+      uri: https://huggingface.co/LuffyTheFox/Qwen3.6-27B-Uncensored-Genesis-MTP-GGUF/resolve/main/Qwen3.6-27B-Uncensored-Genesis-MTP-Q4_K_M.gguf
+    - filename: llama-cpp/models/Qwen3.6-27B-Uncensored-Genesis-Q4_K_M.gguf
+      sha256: 4d2522d09b278a902a5719ebf7e5c50bef7e3bd81d02fc0e4cfcd664943a52cf
+      uri: https://huggingface.co/LuffyTheFox/Qwen3.6-27B-Uncensored-Genesis-MTP-GGUF/resolve/main/Qwen3.6-27B-Uncensored-Genesis-Q4_K_M.gguf
+    - filename: llama-cpp/mmproj/mmproj-Qwen3.6-27B-Uncensored-Genesis-F16.gguf
+      sha256: 082ca68e4a53ce72ae934a11cdd54cf18d3dde6ac63c5d5a75a92bfacf7db430
+      uri: https://huggingface.co/LuffyTheFox/Qwen3.6-27B-Uncensored-Genesis-MTP-GGUF/resolve/main/mmproj-Qwen3.6-27B-Uncensored-Genesis-F16.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
