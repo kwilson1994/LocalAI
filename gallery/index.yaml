@@ -1,4 +1,59 @@
 ---
+- name: "kat-coder-v2.5-dev-imatrix"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/Abiray/KAT-Coder-V2.5-Dev-Imatrix-GGUF
+  description: |
+    **Model Name:** KAT-Coder-V2.5-Dev
+    **Base Model:** Kwaipilot/KAT-Coder-V2.5-Dev
+    **Type:** Open-weight, Post-trained Mixture-of-Experts (MoE) Coding Agent
+
+    **Key Features:**
+      - **Scale:** 35B total parameters (3B activated per token)
+      - **Purpose:** Agentic coding agent for text generation, with strong reasoning retention
+      - **Training:** Fine-tuned on 127K curated agentic/coding examples, enhanced with RL to reduce pathological behaviors (e.g., abnormal tool labels, repetitive outputs)
+      - **Performance:** SOTA results on benchmarks like SWE-bench (69.40%), with improved consistency in multi-turn interactions
+
+    **Use Cases:**
+      - Text generation (text-only)
+      - Code generation (e.g., Python, C++, etc.)
+      - Reasoning tasks requiring contextual consistency
+
+    **Quantization:** GGUF files optimized with **Importance Matrix (IMatrix)** for low VRAM/RAM usage, with recommended versions: `Q4_K_M.gguf` (21.4GB) for 24GB GPUs.
+
+    **Citation:**
+    @misc{katcoder_v25_2026, ...}
+
+    *This model is a lightweight, high-performance text-generation agent designed for agentic coding tasks.*
+  license: "unknown"
+  tags:
+    - llm
+    - gguf
+    - moe
+    - text-to-text
+    - code-generation
+    - text-generation
+    - reasoning
+    - thinking
+  overrides:
+    parameters:
+      model: llama-cpp/models/KAT-Coder-V2.5-Dev-Q4_K_M.gguf
+    name: KAT-Coder-V2.5-Dev-Imatrix-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/Abiray/KAT-Coder-V2.5-Dev-Imatrix-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/KAT-Coder-V2.5-Dev-Q4_K_M.gguf
+      sha256: 435222508515adb7f12d8b9965fc3cfb5d2c26672ecce66a1493e3413f865434
+      uri: https://huggingface.co/Abiray/KAT-Coder-V2.5-Dev-Imatrix-GGUF/resolve/main/KAT-Coder-V2.5-Dev-Q4_K_M.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
