@@ -1,4 +1,46 @@
 ---
+- name: "glm-5.2-vision-mmproj"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/ibrahima2222/GLM-5.2-Vision-mmproj-GGUF
+  description: |
+    **Model Description:**
+    The `ibrahima2222/GLM-5.2-Vision-mmproj-GGUF` repository provides a multimodal model tailored for llama.cpp, integrating the GLM-5.2 text backbone with a MoonViT vision tower and PatchMerger projector. It supports image input via `PROJECTOR_TYPE_GLM5V`, enabling text-to-image reasoning. The model is an unofficial conversion of the Baseten GLM-5.2 Vision model, using a 943 MB F16 GGUF file for the vision tower and a separate `.gguf` file for the projector. It requires the `glm5v-mmproj-vision.patch` to enable compatibility with llama.cpp.
+
+    **Key Features:**
+      - **Multimodal:** Text-to-image reasoning via MoonViT + PatchMerger projector.
+      - **Compatibility:** Works with llama.cpp (commit `ebd048fc5e4b43ec4e0b4abe0b9bf66e1724dad0`).
+      - **Use Case:** Text-to-image generation, image captioning, and vision reasoning.
+      - **Limitations:** Only supports images; no video support. Requires external patch for llama.cpp.
+
+    **Use:** Ideal for deploying GLM-5.2 in llama.cpp environments for vision tasks.
+  license: "none"
+  tags:
+    - multimodal
+    - vision
+    - image-to-text
+    - text-to-text
+    - llm
+    - llama
+    - gguf
+  overrides:
+    name: GLM-5.2-Vision-mmproj-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    mmproj: llama-cpp/mmproj/mmproj-GLM-5.2-Vision-f16.gguf
+    description: Imported from https://huggingface.co/ibrahima2222/GLM-5.2-Vision-mmproj-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/mmproj/mmproj-GLM-5.2-Vision-f16.gguf
+      sha256: badfc9f7f46bf9c383122d55394123c78d9a61f38f4bdfcb9a72d9273303c615
+      uri: https://huggingface.co/ibrahima2222/GLM-5.2-Vision-mmproj-GGUF/resolve/main/mmproj-GLM-5.2-Vision-f16.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
