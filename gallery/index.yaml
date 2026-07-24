@@ -1,4 +1,56 @@
 ---
+- name: "qwen3-4b-computer-science"
+  url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
+  urls:
+    - https://huggingface.co/Irfanuruchi/Qwen3-4B-Computer-Science-GGUF
+  description: |
+    **Model Name:** Qwen3-4B-Computer-Science-GGUF
+    **Base Model:** Qwen/Qwen3-4B
+
+    **Purpose:** A specialized language model fine-tuned for **computer science** tasks, including software engineering, Python programming, debugging, code generation, and technical reasoning.
+
+    **Key Features:**
+      - Optimized for **software engineering** and **computer science** domains.
+      - Supports **LLaMA.cpp**, **LM Studio**, and other GGUF-compatible engines.
+      - Available in quantized versions (Q5_K_M, Q4_K_M, Q8_0, BF16) for balance between quality, memory efficiency, and performance.
+
+    **Recommended Quantization:**
+      - **Q5_K_M** (best balance of quality, memory, and speed for most users).
+      - **Q4_K_M** (best memory efficiency for limited systems).
+
+    **License:** Apache-2.0
+    **Use Cases:** Code generation, debugging, algorithm design, technical question answering, and computer science education.
+
+    **Note:** This model is not the original Qwen3-4B but a specialized version tailored for computer science tasks.
+  license: "apache-2.0"
+  tags:
+    - llm
+    - qwen
+    - gguf
+    - computer-science
+    - software-engineering
+    - code
+    - text-to-text
+    - llama.cpp
+  overrides:
+    parameters:
+      model: llama-cpp/models/Qwen3-4B-Computer-Science-Q4_K_M.gguf
+    name: Qwen3-4B-Computer-Science-GGUF
+    backend: llama-cpp
+    template:
+      use_tokenizer_template: true
+    known_usecases:
+      - chat
+    function:
+      grammar:
+        disable: true
+    description: Imported from https://huggingface.co/Irfanuruchi/Qwen3-4B-Computer-Science-GGUF
+    options:
+      - use_jinja:true
+  files:
+    - filename: llama-cpp/models/Qwen3-4B-Computer-Science-Q4_K_M.gguf
+      sha256: 44dfa2cb266d89b972a18716300f165f5e1aa32615338afa446ceb1512bafe38
+      uri: https://huggingface.co/Irfanuruchi/Qwen3-4B-Computer-Science-GGUF/resolve/main/Qwen3-4B-Computer-Science-Q4_K_M.gguf
 - name: "deepseek-ai.deepseek-v3.2"
   url: "github:mudler/LocalAI/gallery/virtual.yaml@master"
   urls:
